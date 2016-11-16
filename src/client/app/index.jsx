@@ -4,6 +4,7 @@ import Frame from './Frame.jsx';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import { Router, Route, Link } from 'react-router';
 
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -23,8 +24,8 @@ class App extends React.Component {
       method: 'GET',
       mode: 'no-cors',
       headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'NPT1WQ7lcrJUVQR35bbkUHK4iUk'
+   
+        'Authorization': 'RGh4VLowAIYRYA41yD6Iry0nZt0'
       }
 
     })
