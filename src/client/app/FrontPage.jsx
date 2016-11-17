@@ -1,23 +1,27 @@
 import React from 'react';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import RaisedButton from 'material-ui/RaisedButton';
 
 class FrontPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      frontPageData: [{data:{title: "no data"}}]
+      frontPageData: [{data: {title: "Fetching Data..."}}]
     };
     this.loadFrontPage = this.loadFrontPage.bind(this);
+    this.loadTop = this.loadTop.bind(this);
+    this.loadNew = this.loadNew.bind(this);
+    this.loadNext = this.loadNext.bind(this);
   }
 
   componentWillMount(){
-    this.loadFrontPage();
- 
+    this.loadFrontPage('https://www.reddit.com/hot.json?limit=25');
   }
-  loadFrontPage () {
+
+  loadFrontPage (url) {
 
     var context = this;
-    fetch('https://www.reddit.com/top.json?limit=20', {
+    fetch(url, {
       method: 'GET'
     })
     .then(function(res) {
@@ -35,11 +39,43 @@ class FrontPage extends React.Component {
     });
   }
 
+  loadTop(){
+    this.loadFrontPage('https://www.reddit.com/top.json?limit=25');
+  }
+
+  loadNew(){
+    this.loadFrontPage('https://www.reddit.com/new.json?limit=25');
+  }
+
+  loadNext(){
+    this.loadFrontPage('https://www.reddit.com/hot.json?count=25&after=' + this.state.frontPageData[24].data.name);
+  }
 
   render() {
     var context = this;
     return (
       <div className="frontpage">
+        <div className="button-bar">
+          <RaisedButton
+            style={{width: '24%'}}
+            onTouchTap={()=>context.loadFrontPage('https://www.reddit.com/hot.json?limit=25')}
+          >HOT</RaisedButton>
+
+          <RaisedButton
+            style={{width: '24%'}}
+            onTouchTap={context.loadTop}
+          >TOP</RaisedButton>
+
+          <RaisedButton
+            style={{width: '24%'}}
+            onTouchTap={context.loadNew}
+          >NEW</RaisedButton>
+
+          <RaisedButton
+            style={{width: '24%'}}
+            onTouchTap={context.loadNext}
+          >NEXT</RaisedButton>
+        </div>
         
 
         {context.state.frontPageData.map(function(item){

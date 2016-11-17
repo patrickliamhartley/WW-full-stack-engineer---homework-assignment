@@ -1,5 +1,6 @@
 import React from 'react';
 import FrontPage from './FrontPage.jsx';
+import RaisedButton from 'material-ui/RaisedButton';
 
 class Frame extends React.Component {
   constructor(props) {
@@ -92,7 +93,11 @@ class Frame extends React.Component {
         </div>
         
         <FrontPage/>
-        <a href="https://www.reddit.com/api/v1/authorize?client_id=YF8_1ba7h8u8Mw&response_type=code&state=secret&redirect_uri=http://localhost:3000&duration=temporary&scope=identity"><p>Link your reddit account</p></a>
+        <a href="https://www.reddit.com/api/v1/authorize?client_id=YF8_1ba7h8u8Mw&response_type=code&state=secret&redirect_uri=http://localhost:3000&duration=temporary&scope=identity">
+          <RaisedButton
+            fullWidth="true"
+          >Link your reddit account</RaisedButton>
+        </a>
        
        
       </div>
