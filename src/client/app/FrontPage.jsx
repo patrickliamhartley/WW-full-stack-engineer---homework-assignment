@@ -1,4 +1,5 @@
 import React from 'react';
+import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 
 class FrontPage extends React.Component {
   constructor(props) {
@@ -38,18 +39,29 @@ class FrontPage extends React.Component {
   render() {
     var context = this;
     return (
-      <div>
-        <p>frontpage</p>
+      <div className="frontpage">
+        
 
         {context.state.frontPageData.map(function(item){
           return(
+            <a className="enclosing-link" href={item.data.url}>
+            <Card style={{width: "98%", height: 100, padding: 10, margin: "10px 10px 10px 10px"}}>
             <div>
-              <a href={item.data.url}>
-              <p>{item.data.title}</p>
-              <img src={item.data.thumbnail || '../assets/redditIcon.png'}/>
-              <p>{item.data.score}</p>
-              </a>            
+            <CardHeader
+              titleStyle={{fontSize:15}}
+              title={item.data.title}
+              subtitle={"Score: "+item.data.score}
+              avatar={item.data.thumbnail}
+            />
+              
+              
+              
+              
+           
+                        
             </div>
+            </Card> 
+            </a> 
           );
         })}
         

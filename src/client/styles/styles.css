@@ -4,3 +4,10 @@
   background-position: center;
 }
 
+.frontpage{
+  display: flex;
+  flex-wrap: wrap;
+}
+.enclosing-link{
+  width: 100%;
+}

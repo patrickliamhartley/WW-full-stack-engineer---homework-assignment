@@ -90,10 +90,10 @@ class Frame extends React.Component {
       <div>
         <div className="banner-image">
         </div>
-        <p>Welcome to reddit</p>
-        <a href="https://www.reddit.com/api/v1/authorize?client_id=YF8_1ba7h8u8Mw&response_type=code&state=secret&redirect_uri=http://localhost:3000&duration=temporary&scope=identity"><p>Link your reddit account</p></a>
+        
         <FrontPage/>
-        <p>{context.state.user}</p>
+        <a href="https://www.reddit.com/api/v1/authorize?client_id=YF8_1ba7h8u8Mw&response_type=code&state=secret&redirect_uri=http://localhost:3000&duration=temporary&scope=identity"><p>Link your reddit account</p></a>
+       
        
       </div>
     );
