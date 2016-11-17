@@ -4,7 +4,7 @@ class FrontPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      frontPageData: null
+      frontPageData: [{data:{title: "no data"}}]
     };
     this.loadFrontPage = this.loadFrontPage.bind(this);
   }
@@ -25,7 +25,7 @@ class FrontPage extends React.Component {
         
         
         context.setState({
-          frontPageData: parsedRes
+          frontPageData: parsedRes.data.children
         }, function(){
           console.log(context.state.frontPageData);
         });
@@ -40,6 +40,19 @@ class FrontPage extends React.Component {
     return (
       <div>
         <p>frontpage</p>
+
+        {context.state.frontPageData.map(function(item){
+          return(
+            <div>
+              <a href={item.data.url}>
+              <p>{item.data.title}</p>
+              <img src={item.data.thumbnail || '../assets/redditIcon.png'}/>
+              <p>{item.data.score}</p>
+              </a>            
+            </div>
+          );
+        })}
+        
        
       </div>
     );
